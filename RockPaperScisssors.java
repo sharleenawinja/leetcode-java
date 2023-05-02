@@ -70,4 +70,20 @@ public class RockPaperScisssors {
             return "Player 2 won";
         }
     }
+
+    // using switch case
+    public static String rpsGame2(String p1, String p2) {
+        switch(p1) {
+            case "rock":
+                return (p1 == p2) ? "Draw!" : (p2 == "scissors" ? "Player 1 won": "Player 2 won");
+            case "paper":
+                return (p1 == p2) ? "Draw!" : (p2 == "rock" ? "Player 1 won": "Player 2 won");
+            case "scissors":
+                return (p1 == p2) ? "Draw!" : (p2 == "paper" ? "Player 1 won": "Player 2 won");
+            default:
+                return "Invalid input";
+        }
+    }
+
+    // using hashmap
 }
