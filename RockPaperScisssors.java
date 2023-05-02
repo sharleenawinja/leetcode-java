@@ -1,7 +1,9 @@
 // You have to return which player won! In case of a draw return Draw!
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class RockPaperScisssors {
@@ -86,4 +88,16 @@ public class RockPaperScisssors {
     }
 
     // using hashmap
+    public static String rpsGame3 (String p1, String p2) {
+        if (p1.equals(p2)) return "Draw!";
+        
+        Map<String, String> game = new HashMap<>();
+        game.put("scissors", "paper");
+        game.put("paper", "rock");
+        game.put("rock", "scissors");
+
+        String result = game.get(p1);
+        if (result.equals(p2)) return "Player 1 won!";
+        else                   return "Player 2 won!";
+    }
 }
