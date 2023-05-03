@@ -3,6 +3,15 @@
 // Don't forget the space after the closing parentheses!
 
 public class PhoneNumberFormatter {
+
+    public static void main(String[] args) {
+        PhoneNumberFormatter phoneNumber = new PhoneNumberFormatter();
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+        System.out.println(phoneNumber.createPhoneNumber(numbers));
+        System.out.println(PhoneNumberFormatter.createPhoneNumber2(numbers));
+        System.out.println(phoneNumber.createPhoneNumber(numbers));
+    }
+
     public String createPhoneNumber(int[] numbers) {
         // intialize phone number with open bracket
         String phoneNumber = "(";
@@ -40,5 +49,41 @@ public class PhoneNumberFormatter {
     // the formatted string is returne as the output 
     public static String createPhoneNumber2(int[] numbers) {
         return String.format("(%d%d%d) %d%d%d-%d%d%d%d",numbers[0],numbers[1],numbers[2],numbers[3],numbers[4],numbers[5],numbers[6],numbers[7],numbers[8],numbers[9]);
+      }
+
+    
+      //using string builder method
+      public static String createPhoneNumber3(int[] numbers) {
+
+        //create an instance of string builder class
+        StringBuilder phoneNumber = new StringBuilder();
+
+        //append opening bracket
+        phoneNumber.append("(");
+
+        //append first three numbers
+        for(int i =0; i < 3; i++) {
+            phoneNumber.append(numbers[i]); 
+        }
+
+        //append closing bracket
+        phoneNumber.append(") ");
+
+        
+        //append next three numbers
+        for (int i = 3; i < 6; i++){
+            phoneNumber.append(numbers[i]);
+        }
+
+        //append hyphen
+        phoneNumber.append("-");
+        
+        //append last three numbers
+        for(int i = 6; i  < 10; i++ ) {
+            phoneNumber.append(numbers[i]);
+        }
+
+        //calling toString method to convert phoneNumber object to a string
+        return phoneNumber.toString();
       }
 }
