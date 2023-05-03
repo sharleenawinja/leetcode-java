@@ -85,7 +85,7 @@ public class PhoneNumberFormatter {
         for(int i = 6; i  < 10; i++ ) {
             phoneNumber.append(numbers[i]);
         }
-        
+
         //calling toString method to convert phoneNumber object to a string
         return phoneNumber.toString();
       }
@@ -101,4 +101,17 @@ public class PhoneNumberFormatter {
         String lastFour = String.join("", Arrays.copyOfRange(numStrArr, 6, 10));
         return String.format("(%s) %s-%s", areaCode, firstThree, lastFour);
       }
-}
+
+    //   OTHER METHODS OF CONVERTING AN INTEGER ARRAY INTO A STRING ARRAY
+    // using java 8 string
+    // convert the specified primitive array into a IntStream using Arrays.stream() or IntStream.of()
+    // convert each element of the stream to a string using IntSream.mapToObj()
+    // return a string array containing elements of this stream using Stream.toArray()
+
+    public void convertStringArrayToIntArray() {
+        int[] intArray = { 1, 2, 3, 4, 5 };
+        String[] strArray = Arrays.stream(intArray).mapToObj(String::valueOf).toArray(String[]::new);
+        System.out.println(Arrays.toString(strArray));
+    }
+} 
+
