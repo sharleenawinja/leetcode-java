@@ -2,6 +2,8 @@
 // createPhoneNumber(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}) // => returns "(123) 456-7890"
 // Don't forget the space after the closing parentheses!
 
+import java.util.Arrays;
+
 public class PhoneNumberFormatter {
 
     public static void main(String[] args) {
@@ -9,7 +11,8 @@ public class PhoneNumberFormatter {
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
         System.out.println(phoneNumber.createPhoneNumber(numbers));
         System.out.println(PhoneNumberFormatter.createPhoneNumber2(numbers));
-        System.out.println(phoneNumber.createPhoneNumber(numbers));
+        System.out.println(PhoneNumberFormatter.createPhoneNumber3(numbers));
+        System.out.println(phoneNumber.createPhoneNumber4(numbers));
     }
 
     public String createPhoneNumber(int[] numbers) {
@@ -82,8 +85,20 @@ public class PhoneNumberFormatter {
         for(int i = 6; i  < 10; i++ ) {
             phoneNumber.append(numbers[i]);
         }
-
+        
         //calling toString method to convert phoneNumber object to a string
         return phoneNumber.toString();
+      }
+
+    //   using string.join and arrays.copyofrange
+      public String createPhoneNumber4(int[] numbers) {
+        String[] numStrArr = new String[numbers.length];
+        for (int i = 0; i < numbers.length; i++) {
+            numStrArr[i] = Integer.toString(numbers[i]);
+        }
+        String areaCode = String.join("", Arrays.copyOfRange(numStrArr, 0, 3));
+        String firstThree = String.join("", Arrays.copyOfRange(numStrArr, 3, 6));
+        String lastFour = String.join("", Arrays.copyOfRange(numStrArr, 6, 10));
+        return String.format("(%s) %s-%s", areaCode, firstThree, lastFour);
       }
 }
