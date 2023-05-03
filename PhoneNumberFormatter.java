@@ -112,6 +112,18 @@ public class PhoneNumberFormatter {
         int[] intArray = { 1, 2, 3, 4, 5 };
         String[] strArray = Arrays.stream(intArray).mapToObj(String::valueOf).toArray(String[]::new);
         System.out.println(Arrays.toString(strArray));
+
+        // converting int array to string array using regex => not recommended
+        // using regex to remove whitespaces in a string is not recommended because it can be less efficient than other methods and can also be less readable/maintainable
+        // the regex pattern being use below may work for small inputs, but it may not be the most efficient solution for larger inputs, as regular expressions can be slow for certain patterns or input sizes
+        // furthermore this code can be less readable or maintainable because regular expressions can be difficult to understand or modify, especially for people who are not familiar with them
+        String str = Arrays.toString(intArray)        // [1, 2, 3, 4, 5]
+                            .replaceAll("\\s+", "");   // [1,2,3,4,5]
+        
+        String[] stringArray = str.substring(1, str.length() - 1)  // 1,2,3,4,5
+                            .split(",");
+
+        System.out.println(Arrays.toString(stringArray));
     }
 } 
 
