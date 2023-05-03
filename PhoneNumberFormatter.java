@@ -125,5 +125,10 @@ public class PhoneNumberFormatter {
 
         System.out.println(Arrays.toString(stringArray));
     }
+
+    // using int stream
+    public static String createPhoneNumber5(int[] numbers) {
+        return String.format("(%d%d%d) %d%d%d-%d%d%d%d", java.util.stream.IntStream.of(numbers).boxed().toArray());
+      }
 } 
 
